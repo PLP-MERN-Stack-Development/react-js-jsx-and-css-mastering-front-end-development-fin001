@@ -1,70 +1,75 @@
-# React.js and Tailwind CSS Assignment
+# Task Manager (React + Vite)
 
-This assignment focuses on building a responsive React application using JSX and Tailwind CSS, implementing component architecture, state management, hooks, and API integration.
+This repository is a small Task Manager app built with React and Vite — intended as a learning project for a MERN-stack front-end assignment. It includes a local task manager component and a sample API integration (JSONPlaceholder) with pagination and search.
 
-## Assignment Overview
+## Features
+- Task management with persistence (localStorage)
+- Theme support (light/dark) via a theme context
+- API integration: fetch posts from JSONPlaceholder with pagination & search
+- Simple responsive layout with Tailwind-compatible classes
 
-You will:
-1. Set up a React project with Vite and Tailwind CSS
-2. Create reusable UI components
-3. Implement state management using React hooks
-4. Integrate with external APIs
-5. Style your application using Tailwind CSS
+## Prerequisites
+- Node.js 18+ and npm (or yarn)
 
-## Getting Started
+## Setup
+1. Install dependencies
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Install dependencies:
-   ```
-   npm install
-   ```
-4. Start the development server:
-   ```
-   npm run dev
-   ```
+```powershell
+npm install
+```
 
-## Files Included
+2. Start the development server
 
-- `Week3-Assignment.md`: Detailed assignment instructions
-- Starter files for your React application:
-  - Basic project structure
-  - Pre-configured Tailwind CSS
-  - Sample component templates
-
-## Requirements
-
-- Node.js (v18 or higher)
-- npm or yarn
-- Modern web browser
-- Code editor (VS Code recommended)
+```powershell
+npm run dev
+```
 
 ## Project Structure
 
 ```
 src/
-├── components/       # Reusable UI components
-├── pages/           # Page components
-├── hooks/           # Custom React hooks
-├── context/         # React context providers
-├── api/             # API integration functions
+├── api/             # API wrapper (JSONPlaceholder client)
+├── components/      # Reusable UI components (Navbar, Button, TaskManager)
+├── context/         # React context providers (Theme)
+├── hooks/           # Custom hooks (useLocalStorage, useInfiniteScroll)
+├── pages/           # Page components (Posts)
 ├── utils/           # Utility functions
 └── App.jsx          # Main application component
 ```
 
-## Submission
+## Key Files
+- `src/components/TaskManager.jsx` — Task management UI using `useState`, `useEffect`, and `useContext`; persists tasks with `useLocalStorage`.
+- `src/api/jsonPlaceholder.js` — Small API wrapper used by `src/pages/Posts.jsx`.
+- `src/pages/Posts.jsx` — Lists posts with pagination and search, includes loading and error states.
+- `src/context/ThemeContext.jsx` — Provides theme (light/dark) and persists selection to `localStorage`.
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+## Running & Development Notes
+- The app uses Vite; start with `npm run dev`.
+- The theme provider toggles a `dark` class on `document.documentElement` so CSS can react to dark mode (Tailwind's `dark:` utilities will work if Tailwind is configured).
+- If you add Tailwind, create `tailwind.config.js` and include `darkMode: 'class'`.
 
-1. Complete all required components and features
-2. Implement proper state management with hooks
-3. Integrate with at least one external API
-4. Style your application with Tailwind CSS
-5. Deploy your application and add the URL to your README.md
+## API & Pagination
+- The app fetches posts from `https://jsonplaceholder.typicode.com/posts` using `_page` and `_limit` query params for server-side pagination. The `x-total-count` response header is used to calculate total pages.
+- Searching uses the `title_like` parameter to filter by post title (debounced on input).
 
-## Resources
+## Troubleshooting
+- If the dev server fails to start, ensure you have Node 18+ and run `npm install` again.
+- If API requests fail due to CORS or network issues, check your network and try again; JSONPlaceholder is a public test API and may be rate-limited.
 
-- [React Documentation](https://react.dev/)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Vite Documentation](https://vitejs.dev/guide/)
-- [React Router Documentation](https://reactrouter.com/) 
+## Testing & Linting
+- Run ESLint: `npm run lint` (project includes basic ESLint config).
+
+## Next steps / Suggestions
+- Add Tailwind CSS properly and re-introduce responsive/dark styles via `tailwind.config.js`.
+- Add unit tests (Jest + React Testing Library) for `TaskManager` and `Posts`.
+- Allow page-size selection and improved pagination UI (ellipsis for many pages).
+
+---
+
+If you want, I can:
+- (A) Run the dev server now and share the terminal output,
+- (B) Add Tailwind properly and re-style the app,
+- (C) Add tests for `TaskManager`.
+
+Replace this README content with more project-specific instructions if you'd like.
+
