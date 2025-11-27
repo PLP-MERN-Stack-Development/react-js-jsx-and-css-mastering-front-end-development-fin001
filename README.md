@@ -56,20 +56,9 @@ src/
 - If the dev server fails to start, ensure you have Node 18+ and run `npm install` again.
 - If API requests fail due to CORS or network issues, check your network and try again; JSONPlaceholder is a public test API and may be rate-limited.
 
-## Testing & Linting
-- Run ESLint: `npm run lint` (project includes basic ESLint config).
+## Deployment on Netlify
+The app Task Manager is live on Netlify
 
-## Next steps / Suggestions
-- Add Tailwind CSS properly and re-introduce responsive/dark styles via `tailwind.config.js`.
-- Add unit tests (Jest + React Testing Library) for `TaskManager` and `Posts`.
-- Allow page-size selection and improved pagination UI (ellipsis for many pages).
-
+https://plp-mern-wk3-task-manager.netlify.app/
 ---
-
-If you want, I can:
-- (A) Run the dev server now and share the terminal output,
-- (B) Add Tailwind properly and re-style the app,
-- (C) Add tests for `TaskManager`.
-
-Replace this README content with more project-specific instructions if you'd like.
 
